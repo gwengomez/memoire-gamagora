@@ -1,0 +1,95 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+    \usepackage{longtable,geometry}
+    \geometry{dvips,a4paper,margin=1.5in}
+    
+    \usepackage[french]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    
+    \usepackage{eurosym}
+    
+    \usepackage[babel]{csquotes}
+    \MakeAutoQuote{«}{»}
+    
+    \usepackage{graphicx}
+    \graphicspath{ {./images/} }
+
+    \usepackage{wrapfig}
+    
+    \usepackage[final]{pdfpages}
+    
+    \usepackage{rotating}
+    \usepackage{rotfloat}
+    \usepackage{float}
+    
+    \usepackage{longtable, tabu}
+    
+    \usepackage{makeidx}
+    
+    \usepackage{blindtext}
+    \usepackage{scrextend}
+    
+    \setcounter{tocdepth}{3}
+    
+    \usepackage[backend=biber]{biblatex}
+    \addbibresource{bibliography.bib}
+    
+    \usepackage[pdfpagelabels, plainpages=false]{hyperref}
+    
+    \usepackage[toc,acronym,xindy]{glossaries}
+    \makeglossaries
+    \makeindex
+    
+    \usepackage{xparse}
+    
+    \DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+        \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+            description={#6},#1
+        }
+        \makeglossaries
+        \newacronym[see={[Glossaire:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+    }
+    
+    
+    \input{glossary}
+
+\begin{document}
+
+
+\input{title_page}
+
+\newpage
+
+\input{remerciements}
+
+\tableofcontents
+\newpage
+
+\input{introduction}
+
+\input{presentation}
+
+\input{existant}
+
+\input{problematique}
+
+\input{realisation} 
+
+\input{conclusion}
+
+\printglossary[type=\acronymtype]
+\newpage
+
+\printglossary
+\newpage
+
+\printbibliography[heading=bibintoc, title={Bibliographie}]
+
+\input{annexes}
+
+\input{abstract}
+
+
+
+
+\end{document}

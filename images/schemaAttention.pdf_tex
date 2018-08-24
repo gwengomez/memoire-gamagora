@@ -1,0 +1,113 @@
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'schemaAttention.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1296.79201836bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.62301462)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.57459082,0.41465791){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Fig. 2 Sustained Attention\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{schemaAttention.pdf}}%
+    \put(0.61637878,0.45140994){\color[rgb]{0,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.7045455}\smash{\begin{tabular}[t]{l}cognitive  domain\end{tabular}}}}%
+    \put(0.76366417,0.48104727){\color[rgb]{0,0,1}\makebox(0,0)[lt]{\lineheight{1.7045455}\smash{\begin{tabular}[t]{l}sensory  domain\end{tabular}}}}%
+    \put(0.72308041,0.49567362){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.08333325}\smash{\begin{tabular}[t]{l}\textit{tactile attention}\end{tabular}}}}%
+    \put(0.72782821,0.50687471){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.08333325}\smash{\begin{tabular}[t]{l}\textit{auditory attention}\end{tabular}}}}%
+    \put(0.72141037,0.51708139){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.08333325}\smash{\begin{tabular}[t]{l}\textit{visual attention}\end{tabular}}}}%
+    \put(0.69011447,0.53149003){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.08333325}\smash{\begin{tabular}[t]{l}\textit{spatial attention}\end{tabular}}}}%
+    \put(0.57749743,0.47186234){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.08333325}\smash{\begin{tabular}[t]{l}\textit{metacognition}\end{tabular}}}}%
+    \put(0.60684421,0.58235976){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.08333325}\smash{\begin{tabular}[t]{l}Selective attention\end{tabular}}}}%
+    \put(0.58355206,0.53474268){\color[rgb]{0,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.7045455}\smash{\begin{tabular}[t]{l}motor domain\end{tabular}}}}%
+    \put(0.59802795,0.38913766){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.37983841\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{schemaAttention.pdf}}%
+    \put(0.8753243,0.35036942){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{\textit{Switch}}\end{tabular}}}}%
+    \put(0.76051359,0.30080567){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Duration}\end{tabular}}}}%
+    \put(0.8808971,0.32845243){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Mind wandering\end{tabular}}}}%
+    \put(0.67541076,0.39029312){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Focus\end{tabular}}}}%
+    \put(0.65417047,0.37232179){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{(dis) engagement}\end{tabular}}}}%
+    \put(0.75324098,0.35472778){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{\textit{maintenance}}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{schemaAttention.pdf}}%
+    \put(0.84121386,0.37262821){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{disengagement}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{schemaAttention.pdf}}%
+    \put(0.86151037,0.29860899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}time\end{tabular}}}}%
+    \put(0.57459082,0.611297){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Fig. 1 Selective Attention\end{tabular}}}}%
+    \put(0.57459082,0.26313014){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Fig. 3 Relation between intensity and Duration\end{tabular}}}}%
+    \put(0.69831483,0.06788813){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}pop out\end{tabular}}}}%
+    \put(0.76575269,0.0680279){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}"search"\end{tabular}}}}%
+    \put(0.6590366,0.07647336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Vigilance decrement\end{tabular}}}}%
+    \put(0.72749994,0.02808792){\color[rgb]{1,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}SALIENCE\end{tabular}}}}%
+    \put(0.69155226,0.01672469){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Internal valence   (task instruction)\\independant        (feature  of the stimulus\\                                       of the scene)\end{tabular}}}}%
+    \put(0.69451157,0.08382605){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Boredom\end{tabular}}}}%
+    \put(0.76570129,0.08567959){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}perceptual load\end{tabular}}}}%
+    \put(0.76591292,0.07663843){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Complexity of the task\end{tabular}}}}%
+    \put(0.76565594,0.09282941){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Effort\\\end{tabular}}}}%
+    \put(0.76565594,0.05067796){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Fatigue\end{tabular}}}}%
+    \put(0.66926921,0.16118032){\color[rgb]{0,0,1}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MOTIVATION?\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{schemaAttention.pdf}}%
+    \put(0.65974859,0.24092676){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Duration (in min)\end{tabular}}}}%
+    \put(0.8019775,0.15422389){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}task difficulty\end{tabular}}}}%
+    \put(0.69120926,0.13553371){\color[rgb]{0,0,0}\rotatebox{6.0375163}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Underload\end{tabular}}}}}%
+    \put(0.76132839,0.13995039){\color[rgb]{0,0,0}\rotatebox{6.1395568}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Overload\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{schemaAttention.pdf}}%
+    \put(0.68099631,0.05997923){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.34375}\smash{\begin{tabular}[t]{l}mindlessness\end{tabular}}}}%
+    \put(0.76570332,0.05997923){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.34375}\smash{\begin{tabular}[t]{l}mindfullness\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{schemaAttention.pdf}}%
+    \put(0.79423135,0.13254607){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Vigilance\end{tabular}}}}%
+    \put(0.82476239,0.13251429){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(measure of "\textbf{intensity}")\end{tabular}}}}%
+    \put(0.68148489,0.11938691){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\%\end{tabular}}}}%
+    \put(0.7796772,0.11938691){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}100\%\end{tabular}}}}%
+    \put(0.68850065,0.20905665){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Capacity limitation ?\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{schemaAttention.pdf}}%
+    \put(0.67563704,0.0919077){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.08333325}\smash{\begin{tabular}[t]{l}Mind wandering\end{tabular}}}}%
+    \put(0.68244423,0.10623897){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.625}\smash{\begin{tabular}[t]{l}from vigilance to concentration\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{schemaAttention.pdf}}%
+    \put(0.76565594,0.04258105){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}tunnel vision\end{tabular}}}}%
+    \put(0.79764825,0.09341021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{2.34375}\smash{\begin{tabular}[t]{l}stress\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

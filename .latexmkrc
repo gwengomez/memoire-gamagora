@@ -6,3 +6,5 @@ sub makeglossaries {
     popd;
     return $return;
 }
+
+@defaultfiles = ("Memoire.tex");

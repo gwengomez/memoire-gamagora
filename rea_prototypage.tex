@@ -25,20 +25,131 @@ Nous n'étions pas encore sûrs des conditions de victoire :
 \end{itemize}
 
 
-\paragraph{}Il était également important de définir quels étaient les paramètres à régler. Dans un premier temps, nous avons pu dégager une dizaine de paramètres, certains
+\paragraph{}Il était également important de définir quels étaient les paramètres à régler. Nous avons pu dégager une première liste de paramètres au préalable, certains
 quantifiables, d'autres non.
 
 Parmi les quantifiables :
 \begin{itemize}
-\item Vitesse d'apparition/disparition des éléments
-\item Nombre de cibles total ou pourcentage de chance d'apparition de la cible durant la partie
-\item Nombre de distracteurs total ou pourcentage de chance d'apparition du distracteur durant la partie
-\item Emplacement des éléments par rapport au centre
-\item 
+    \item Vitesse d'apparition/disparition des éléments
+    \item Nombre de cibles total ou pourcentage de chance d'apparition de la cible durant la partie
+    \item Nombre de distracteurs total ou pourcentage de chance d'apparition du distracteur durant la partie
+    \item Emplacement des éléments par rapport au centre
+    \item Nombre de cible a trouver pour finir la partie
+    \item Temps alloué à la partie
+    \item Nombre de distracteurs différents\\
 \end{itemize}
+Parmi les inquantifiables :
+\begin{itemize}
+    \item Le design de la cible
+    \item Le design des distracteurs
+    \item La ressemblance entre la cible et les distracteurs
+\end{itemize}
+
+\paragraph{}Pour les touches nous avons choisi pour commencer de garder les mêmes touches que pour la tâche de CPT. Pour enlever les objets, il faudrait alors utiliser la barre espace.
+S'il y a plusieurs objets à enlever, cela choisira le premier apparut, donc le plus bas.
 
 \subsubsection{Création de la première scène}
 
+\paragraph{}Pour notre prototype, nous avons commencé par réaliser une première scène plutôt simple. Quelques cylindres représentent le tuyau. Le design n'étant pas très important
+dans un premier temps, nous avons fait quelque chose de simple ressemblant un peu à Mario. Un bouton "Start" lance le jeu, remplacé par un bouton "Stop" si l'on veut l'arrêter. Sinon,
+la partie continue jusqu'à ce qu'un certain nombre de cibles soit apparues. \\
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=10cm]{proto-pipe1.png}
+    \end{center}
+    \caption{1\up{er} prototype}
+\label{ProtoPipe1}
+\end{figure}
+
+\begin{wrapfigure}[9]{l}{3cm}
+    \vspace{-10pt}
+    \includegraphics[width=3cm]{proto-pipe-elements.png}
+    \captionsetup{labelformat=simpleNumber}
+    \caption{Objets}
+\end{wrapfigure}
+
+\paragraph{}Les objets dont le joueur doit faire attention sont des boules bleues, plus ou moins claires. La boule la plus claire est la cible, les autres sont les distracteurs. Le
+joueur doit être attentif pour enlever la bonne boule. Lorsqu'il en enlève une, celle-ci se déplace jusqu'au point de score pour montrer qu'il a réussi, et le score s'incrémente.
+S'il réussit à enlever une cible, il gagne 15 points. S'il en rate une ou s'il essaie d'en enlever une alors qu'il n'y en a pas, il perd 5 points.
+
+\newpage
+
+\paragraph{}Lors d'une partie, nous mesurons la performance d'une personne. Nous en parlerons plus en détail dans la partie \ref{Donnees}. Selon la performance du joueur, nous pouvons
+augmenter ou diminuer la difficulté de plusieurs manières.
+
+\paragraph{}D'abord, nous avons cherché à refermer le tube pour que les objets soient visibles pendant moins longtemps. La partie basse du tube peut monter jusqu'à un certain point, les objets
+devant rester visibles. Le joueur doit donc être plus attentif.
+
+\paragraph{}Puis, comme le jeu était toujours assez facile, nous avons fait bouger les tubes. Cela n'est pas très clair sur la figure \ref{ProtoPipeDifficultes} mais lorsque le joueur est
+performant, le tube se met à trembler tout en pivotant de quelques crans sur la droite ou la gauche. Nous avons mis un angle limite pour éviter une rotation complète du tube.
+
+\paragraph{}Enfin, le jeu étant encore trop facile, nous avons rajouté la possibilité d'ajouter des tuyaux. Il est possible d'en rajouter jusqu'à 5 (ce qu'il est possible d'afficher à l'écran). Le
+nombre de tuyaux reste fixe durant une partie, le joueur ne pouvant en rajouter ou en enlever qu'entre deux parties.
+
+\paragraph{}Durant une partie, tous ces paramètres de difficultés peuvent être actifs en même temps. Néanmoins, ceux-ci s'activent selon la performance du joueur : si celui-ci n'est pas très
+performant, la difficulté ne bougera pas trop, voire baissera pour s'adapter à son niveau. \\ \\
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=13cm]{proto-pipe-difficultes-evolution.png}
+    \end{center}
+    \caption{Evolution de la difficulté}
+\label{ProtoPipeDifficultes}
+\end{figure}
+
+\newpage
 \subsubsection{Amélioration du design et du gameplay}
+
+\paragraph{}Après que le prototype soit fonctionnel et validé par les chercheurs, nous avons voulu le rendre un peu plus esthétique. Nous en avons aussi profité pour améliorer le
+gameplay et rajouter du contenu. \\
+
+
+\begin{wrapfigure}[13]{l}{6cm}
+    \vspace{-10pt}
+    \includegraphics[width=6cm]{hl2-power-generator.jpg}
+    \captionsetup{labelformat=simpleNumber}
+    \caption{Décor}
+\end{wrapfigure}
+
+\paragraph{Contexte}Notre thème est la \gls{SF}. Nous avons donc cherché des inspirations dans des jeux avec cette thématique. L'un d'eux nous est venu assez rapidement à l'esprit.
+Il y a dans Half Life 2 des générateurs d'énergie qui ressemble à des tubes dans laquelle une sphère d'énergie flotte. Ces générateurs sont d'abord fermés par une sorte de bouclier
+qu'il faut ouvrir pour pouvoir récupérer la sphère d'énergie. Nous avons voulu nous baser sur ce principe pour notre gameplay.
+
+\paragraph{}Nos tubes de Mario sont donc devenus des tubes électromagnétiques, protégés par des boucliers qui peuvent s'ouvrirent en se séparant en deux au milieu. Des sphères
+d'énergie descendant le long du tube remplacent les boules bleues et sont maintenant les nouveaux distracteurs et cible.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=9cm]{PDC-tube-evolution.jpg}
+    \end{center}
+    \caption{Création des tubes}
+\label{TubeEvolution}
+\end{figure}
+
+\begin{wrapfigure}[5]{r}{5cm}
+    \vspace{-25pt}
+    \includegraphics[width=5cm]{PDC-decor.png}
+    \captionsetup{labelformat=simpleNumber}
+    \caption{Décor}
+\end{wrapfigure}
+
+\paragraph{}En parallèle, nous avons construit une scène Unity avec un package de \gls{SF} pour ambiancer le mini jeu. Cette scène représente l'intérieur d'une base scientifique avec
+des couleurs plutôt blanches, bleues et oranges.
+
+\newpage
+
+\paragraph{Gameplay}Pour pouvoir intégrer le tube dans la scène, nous avons pensé à le multiplier et le placer sur un barillier qui pourrait tourner. Chaque tube aurait un niveau
+d'énergie. Le joueur ne pourrait interagir qu'avec certains tubes à la fois. Il ne faut pas en mettre trop car sinon, cela deviendrait bien trop difficile. Le but du joueur est
+d'enlever des sphère d'énergie instable (les cibles) pour ne pas que le niveau d'énergie stable d'un des tubes arrive à 0.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=13cm]{PDC-barillier-evolution.jpg}
+    \end{center}
+    \caption{Barillier de tubes}
+\label{BarillierTube}
+\end{figure}
+
 
 \label{prototypage}

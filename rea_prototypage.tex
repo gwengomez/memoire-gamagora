@@ -140,8 +140,14 @@ des couleurs plutôt blanches, bleues et oranges.
 \newpage
 
 \paragraph{Gameplay}Pour pouvoir intégrer le tube dans la scène, nous avons pensé à le multiplier et le placer sur un barillier qui pourrait tourner. Chaque tube aurait un niveau
-d'énergie. Le joueur ne pourrait interagir qu'avec certains tubes à la fois. Il ne faut pas en mettre trop car sinon, cela deviendrait bien trop difficile. Le but du joueur est
-d'enlever des sphère d'énergie instable (les cibles) pour ne pas que le niveau d'énergie stable d'un des tubes arrive à 0.
+d'énergie. Le but du joueur est d'enlever des sphère d'énergie instable (les cibles) pour ne pas que le niveau d'énergie stable d'un des tubes arrive à 0. Si c'est le cas, c'est le
+game over. Le joueur peut utiliser les touches droite et gauche du clavier pour faire tourner le barillier et faire face à un autre tube. Il ne peut enlever une sphère instable d'un
+tube que lorsque celui-ci lui fait face. Si le joueur est performant, la difficulté peut augmenter de plusieurs manières :
+\begin{itemize}
+    \item Un nouveau tube s'ouvre
+    \item Un des tubes ouverts referme légèrement son bouclier
+    \item La couleur des distracteurs se rapproche de celle de la cible
+\end{itemize}
 
 \begin{figure}[H]
     \begin{center}
@@ -151,5 +157,105 @@ d'enlever des sphère d'énergie instable (les cibles) pour ne pas que le niveau
 \label{BarillierTube}
 \end{figure}
 
+\begin{wrapfigure}[5]{l}{4cm}
+    \vspace{-25pt}
+    \includegraphics[width=4cm]{PDC-narration.png}
+    \captionsetup{labelformat=simpleNumber}
+    \caption{Narration}
+\end{wrapfigure}
+
+\paragraph{}Les instructions destinées au joueur sont expliquées au début de la première partie d'une session de jeu par la narration. Celle-ci explique le contexte dans lequel se
+trouve le mini-jeu, que doit faire le joueur et quelles sont les contrôles à utiliser. \\ \\ \\
+
+\paragraph{Ouverture des tubes}Sur le barillier, seulement 3 tubes accolés maximum sont ouverts à la fois pour des raisons de visibilité des tubes par le joueur. Comme les tubes
+s'ouvrent un par un au fur et à mesure de la partie, il fallait un algorithme qui puisse sélectionner le bon tube à ouvrir. L'image \ref{OpenTube} montre les possibilités de tube à
+ouvrir que l'algorithme doit pouvoir trouver. Lorsque ces possibilités sont trouvées, on choisit un tube aléatoirement parmi cette liste. Cet algorithme doit pouvoir être assez
+générique pour être fonctionnel peu importe le nombre de tubes à ouvrir et peu importe le nombre de tubes sur le barillier.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=11cm]{PDC-open-tube.jpg}
+    \end{center}
+    \caption{Tubes à ouvrir selon la situation}
+\label{OpenTube}
+\end{figure}
+
+\paragraph{}Les tubes du barillier sont numérotés de 0 à 7. Les tubes déjà ouverts sont inclus dans une liste. On suppose que dans la liste, le premier tube est celui le plus à gauche
+du groupement de tubes ouverts, le deuxième est le tube ouvert suivant à sa droite, jusqu'au dernier tube qui est le tube ouvert le plus à droite du groupement. C'est à dire que si les
+tubes 0, 1 et 7 sont ouverts, la liste sera : \{7,0,1\}. Pour résoudre ce problème, nous avons avons distingué deux situations :
+\begin{description}
+    \item[Situation 1 :] Tous les tubes ouverts sont accolés
+    \item[Situation 2 :] Il y a un ou plusieurs tubes fermés à l'intérieur du groupement de tubes
+\end{description}
+Dans les deux situations, il faut trouver quels sont les tubes extérieurs au groupement que l'on peut ouvrir. Pour cela, il faut en premier calculer l'étendue du groupement. Tant que
+le groupement n'est pas à cheval sur un index 0, tout va bien, on calcule simplement la différence entre l'index du tube le plus à droite et l'index du tube le plus à gauche et on
+rajoute 1. Sinon, on doit d'abord ajouter le nombre de tubes du barillier à tous les index qui sont inférieurs à l'index du tube le plus à gauche : si la liste de tube ouverts est
+{7,0,1}, elle deviendra {7,8,9}. On peut ensuite appliquer la méthode décrite avant. On applique ensuite une boucle pour trouver les extrémités :
+\begin{verbatim}
+Pour i allant de l'étendue du groupement au nombre maximum de
+tube ouvert :
+    min = index tube le plus à gauche
+        - (nombre maximum de tubes ouverts - i)
+    max = index tube le plus à droite
+        + (nombre maximum de tubes ouverts - i)
+    Index dans la séquence(min) -> possibilité
+    Inde dans la séquence(max) -> possibilité
+Fin de la boucle Pour
+\end{verbatim}
+De cette façon, on obtient toutes les extrémités possibles. Maintenant il faut traiter la seconde situation : si des tubes sont fermés au milieu du groupement de tubes ouverts. Pour
+cela, il suffit de parcourir chaque tube à partir du premier jusqu'au dernier du groupement : si le tube est fermé on le rajoute à la liste des possibilités. On obtient donc toutes les
+possibilités, il n'y a plus qu'a choisir une possibilité au hasard et ouvrir ce tube.
+
+\paragraph{}Plus haut, j'ai précisé qu'on supposait que la liste des tubes ouverts était triée d'une certaine manière. Apres avoir ouvert le tube, il faut donc ajouter son index au
+bon endroit dans la liste des tubes ouverts. Pour cela on doit le comparer avec chaque index de la liste. Cela donne :
+\begin{verbatim}
+Pour x = chaque index de la liste des tubes ouverts :
+    On a i = index du tube a rajouter
+    valeur rajoutée = 0
+    Si Abs(x - i) > longueur maximum du groupement
+        On rajoute + 8 à la plus petite valeur entre x et i
+    Si (x > i)
+        On intercale l'index du tube à rajouter à
+            l'emplacement de x dans la liste
+        Stop de la boucle Pour
+    Sinon Si x est le dernier élément de la liste
+        On place l'index du tube à rajouter à la fin de
+            la liste
+Fin de la boucle Pour
+\end{verbatim}
+
+\newpage
+\paragraph{Gestion du score} Concernant le scoring, nous avons décidé de nous inspirer du système de scoring du jeu de rythme Osu. Dans l'image \ref{ScoringInspiration}, on peut voir 4
+éléments principaux de scoring. En haut à gauche se trouve une jauge de vie qui baisse à chaque erreur et remonte a chaque rythme réussi. En bas à gauche se trouve le combo de rythmes
+réussis d'affilé. Celui-ci est un multiplicateur des points gagnés par rythme réussi. La somme totale des points est affichée en haut à droite, au dessus du pourcentage de réussite sur
+la partie. Le scoring sur Osu est détaillé sur leur site internet \cite{OSU}.\\
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=13cm]{osu-scoring-inspiration-description.png}
+    \end{center}
+    \caption{Le scoring dans Osu}
+\label{ScoringInspiration}
+\end{figure}
+
+\begin{wrapfigure}[8]{l}{3cm}
+    \vspace{-10pt}
+    \includegraphics[width=3cm]{PDC-scoring-multi.png}
+    \captionsetup{labelformat=simpleNumber}
+    \caption{Multi}
+\end{wrapfigure}
+
+\paragraph{}Nous avons donc repris ces 4 éléments : il y a soit une jauge de vie qui est commune à tous les tubes, soit une jauge de vie pour chaque tube dans le carré noir en bas à
+gauche de l'écran. Si des cibles passent, la jauge de vie baisse de 15. Si celles-ci sont retirées, la jauge remonte de 5. A chaque distracteur qui passe, la barre de vie monte
+également de 0.1. Cela permet de faire remonter tout doucement la jauge de vie dans le cas où peu de cibles apparaitraient. Au dessus de la jauge de vie se trouve le combo de réussite
+et le score. En bas à droite, la cible est représentée au joueur. La précision de réussite est juste au dessus de la cible.
+
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=13cm]{PDC-scoring.png}
+    \end{center}
+    \caption{Le scoring dans notre jeu}
+\label{ScoringPDCInspiration}
+\end{figure}
 
 \label{prototypage}

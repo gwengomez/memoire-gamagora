@@ -30,20 +30,28 @@ auprès de la \gls{CNIL}, ce qui implique une procédure assez longue (plusieurs
 Parmi les données à recueillir, les informations de connexion étaient les seules permettant d'identifier formellement un joueur. Nous avons donc choisi de créer un hash à partir du
 login et du mot de passe et nous l'utilisons afin de différencier les joueurs.
 
-\paragraph{}Un autre problème s'est posé dans la gestion de la progression des joueurs. Pour des raisons de sécurité informatique, Sylvain préférait éviter d'envoyer des données autres
-que le jeu en lui-même aux joueurs. Il était donc nécessaire de trouver des solutions pour la connexion du joueur et la sauvegarde de sa progression.
+\paragraph{}Un autre problème s'est posé dans la gestion de la progression des joueurs. Pour des raisons de sécurité informatique, \emph{Sylvain Maurin} préférait éviter d'envoyer des
+données autres que le jeu en lui-même aux joueurs. Il était donc nécessaire de trouver des solutions pour que la connexion du joueur et la sauvegarde de sa progression soient présent
+sans lui renvoyer d'informations.
 
-Concernant la connexion, nous sommes
-parti du principe que le joueur devait bien retenir ses identifiants. Si son identification est connue, nous ajoutons ses données à son profil, sinon, nous créons un nouveau profil
-de joueur.
+Concernant la connexion, nous sommes partis du principe que le joueur devait bien retenir ses identifiants. Si son identification est connue, nous ajoutons ses données à son profil,
+sinon, nous créons un nouveau profil de joueur.
 
-Pour la sauvegarde de la progression du joueur, nous pouvons extraire du jeu un fichier texte qui permet de savoir où le joueur en est dans le jeu. Lorsque celui-ci crée une
+\begin{figure}[H]
+    \begin{center}
+    \includegraphics[width=10cm]{login-screen.png}
+    \end{center}
+    \caption{Ecran de connexion du joueur}
+\label{LoginScreen}
+\end{figure}
+
+\paragraph{}Pour la sauvegarde de la progression du joueur, nous pensons extraire du jeu un fichier texte qui permet de savoir où le joueur en est dans le jeu. Lorsque celui-ci crée une
 nouvelle session de jeu (à sa connexion), il pourra importer ce fichier texte, et le jeu chargera sa progression.
 
 \subsubsection{Méthode d'envoi des données}
 
-\paragraph{}Pour envoyer les données, nous avons choisi d'envoyer des logs à un serveur web Apache. Ces logs sont enregistrées dans un fichier texte sur
-le serveur. Les données sont envoyées à différents moments lorsqu'un joueur joue :
+\paragraph{}Pour envoyer les données, nous avons choisi d'envoyer des logs à un serveur web Apache. Ces logs sont enregistrées dans un fichier texte sur le serveur. Les données sont
+envoyées à différents moments lorsqu'un joueur joue :
 \begin{description}
 \item[Lors de la connexion :] Un nouveau profil de joueur est créé s'il n'existe pas encore. Une nouvelle session de jeu est créée pour connaitre la date et si le joueur joue seul.
 \item[Lors de la création d'un partie :] Une nouvelle partie est créée avec la date et le jeu choisi.
@@ -80,10 +88,20 @@ des données depuis le jeu jusqu'à leur extraction.
 
 \subsubsection{Récupération et traitement des données}
 
-\paragraph{}Nous avons décidé pour traiter les données de créer un parseur en Rust. Cela m'a permis d'apprendre un peu ce langage que je ne connaissais pas. Ce parseur récupère les logs
-du serveur Apache et permet de créer un fichier JSON utilisable par les chercheurs. Un énumérateur permet de déterminer le comportement du parseur selon le type de donnée reçu. Il analyse
-le "verbe" contenu dans l'url (le 2$Text^{ème}$ élément), puis traite les données afin d'en faire une structure de données qui contient les utilisateurs, leurs sessions, leurs parties et
-leurs données.
+\paragraph{}Nous avons décidé pour traiter les données de créer un parseur en \emph{Rust}\footnote{\url{https://www.rust-lang.org/fr-FR/}}. Cela m'a permis d'apprendre un peu ce
+langage que je ne connaissais pas. Nous avons l'avons utilisé pour plusieurs raisons:
+\begin{itemize}
+    \item C'est un langage qui interdit au travers de son compilateur beaucoup d'erreur. Cette particularité nous permet d'assurer que les chercheurs ou futurs 
+    développeur travaillant sur ce projet ne pourrons pas écrire un code incorrect facilement. En contrepartie, l'évolution de cet extracteur sera plus longue.
+    \item C'est un langage naturellement multiplateforme.
+    \item C'est un langage compilé qui fournit un exécutable après construction. Il n'y a donc nul besoin d'une "machine virtuelle" tel que la \emph{JVM} pour 
+    Java ou l'\emph{interpréteur de Python} pour Python.
+\end{itemize}
+
+
+\paragraph{}Ce parseur récupère les logs du serveur Apache et permet de créer un fichier JSON utilisable par les chercheurs. Un énumérateur permet de déterminer le comportement du
+parseur selon le type de donnée reçu. Il analyse le "verbe" contenu dans l'url (le 2\up{ème} élément), puis traite les données afin d'en faire une structure de données qui contient
+les utilisateurs, leurs sessions, leurs parties et leurs données.
 
 \begin{figure}[H]
     \begin{center}
@@ -93,5 +111,6 @@ leurs données.
 \label{DataParser}
 \end{figure}
 
-\paragraph{}Pour créer le fichier JSON, nous avons utilisé une librairie Rust disponible sur un Github \cite{JSONRUST}. Grâce à cette librairie, le parseur crée plusieurs fichiers.
-Un premier fichier répertorie tous les joueurs de notre jeu. Ensuite, un fichier est créé pour chaque joueur et contient toutes les données récupérées.
+\paragraph{}Pour créer le fichier JSON, nous avons utilisé la bibliothèque \emph{Serde}\cite{JSONRUST} disponible sur Github. Grâce à cette bibliothèque, le parseur crée plusieurs
+fichiers. Un premier fichier répertorie tous les joueurs de notre jeu avec leur année de naissance et leur sexe. Ensuite, un fichier est créé pour chaque joueur et contient toutes
+les données envoyées lors de ses temps de jeu, à savoir les sessions, les parties, les données de chaque partie comme le dprime ...

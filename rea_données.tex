@@ -1,7 +1,7 @@
 \subsection{Gestion des données}
 \label{Donnees}
 
-\subsubsection{Des données à analyser}
+\subsubsection{Les données des joueurs}
 
 \paragraph{}Dans la tâche d'expérimentation réalisée par les chercheurs, certaines données sont recueillies pour être analysées. Ces données regroupent :
 \begin{description}
@@ -11,24 +11,23 @@
 \item[Le dprime :] la sensibilité du sujet pour identifier la cible des distracteurs. Voici le calcul de la valeur du dprime : \[NormeInverse(PourcentageHits) - NormeInverse(PourcentageFA)\]
 \end{description}
 
-\newpage
-\paragraph{}Ces données sont propres à chaque sujet et sont analysées par session. On peut ainsi voir l'impact de l'entrainement sur le sujet et comparer son évolution par rapport
-aux autres sujets. J'ai pu participer à la tâche d'entrainement en tant que sujet afin de bien comprendre son fonctionnement. \`{A} chaque session, mes performances se
-sont améliorées. Voici mes résultats sur 5 sessions :
+\paragraph{Des données pour l'adaptativité}Les données sauvegardées servent avant tout dans notre jeu. En effet, celui-ci doit être adaptatif pour pouvoir suivre l'évolution des
+capacités attentionnelles du joueur. S'il s'améliore, le jeu doit devenir plus difficile et ainsi continuer sa progression. Si au contraire, il a plus de difficultés, le jeu doit
+devenir un peu plus simple pour ne pas qu'il décroche complètement. Comme expliqué précédemment avec la figure \ref{DifficultyAndAttention}, le jeu doit être assez difficile pour être
+un entrainement mais pas trop pour ne pas que le sujet décroche. Pour réguler cette difficulté, nous utilisons la valeur du dprime. Celle-ci oscille entre 4 et -4. Si elle est positive,
+le joueur est performant, et inversement. Nous devons alors déterminer à partir de quelle valeur du dprime la difficulté augmente ou diminue. Actuellement la difficulté change à 1 et
+-1. C'est une valeur qui peut être amenée à changer pour équilibrer au mieux notre jeu.
 
-\begin{figure}[H]
-    \begin{center}
-    \includegraphics[width=11cm]{cptPerformance.png}
-    \end{center}
-    \caption{L'évolution de mes performances sur la tâche de CPT sur 5 sessions}
-\label{CptPerformance}
-\end{figure}
+\paragraph{Des données pour l'analyse}L'intérêt de ce jeu est aussi de collecter les données des joueurs pour pouvoir les analyser. Cela pourrait nous permettre de mieux comprendre le
+fonctionnement de l'évolution des capacités attentionnelles des joueurs. 
 
-\paragraph{}Un des objectifs du jeu est d'obtenir ces données à partir des performances des joueurs. De cette façon, les chercheurs auront accès à un nombre assez conséquent de
-données à analyser. Le premier problème qui s'est posé est celui de la conservation de données personnelles. En effet, conserver ce type de données nécessite de monter un dossier
-auprès de la \gls{CNIL}, ce qui implique une procédure assez longue (plusieurs mois, voire plus d'un an). C'est pourquoi nous avons fait le choix d'anonymiser les données recueillies.
-Parmi les données à recueillir, les informations de connexion étaient les seules permettant d'identifier formellement un joueur. Nous avons donc choisi de créer un hash à partir du
-login et du mot de passe et nous l'utilisons afin de différencier les joueurs.
+\paragraph{Les données personnelles}Il étaient nécessaire lors de la récolte de ces données de pouvoir savoir à quel "profil" de personnes elles appartiennent et de pouvoir suivre
+l'évolution du joueur. Le premier problème qui s'est posé est celui de la conservation de données personnelles. En effet, conserver des données permettant d'identifier formellement
+un individu nécessite de monter un dossier auprès de la \gls{CNIL}, ce qui implique une procédure assez longue (plusieurs mois, voire plus d'un an). 
+
+Néanmoins, la plupart des informations nécessaires ne sont pas discriminantes. En effet, il était surtout important de connaître le sexe de la personne et son âge. Parmi les données à
+recueillir, les informations de connexion étaient les seules permettant d'identifier formellement un joueur. C'est pourquoi nous avons fait le choix d'anonymiser les données
+recueillies. Nous avons donc choisi de créer un hash à partir du login et du mot de passe et nous l'utilisons afin de différencier les joueurs.
 
 \paragraph{}Un autre problème s'est posé dans la gestion de la progression des joueurs. Pour des raisons de sécurité informatique, \emph{Sylvain Maurin} préférait éviter d'envoyer des
 données autres que le jeu en lui-même aux joueurs. Il était donc nécessaire de trouver des solutions pour que la connexion du joueur et la sauvegarde de sa progression soient présent

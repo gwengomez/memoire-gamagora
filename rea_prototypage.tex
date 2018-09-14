@@ -13,8 +13,8 @@
 
 \paragraph{}Nous avons choisi le mini jeu du tuyau comme premier jeu car l'idée était plutôt simple. Il y a un tuyau au milieu de l'écran qui est brisé en son centre. Le
 joueur voit des objets tomber par le trou causé par la brisure. Il doit identifier un objet cible parmi tous les autres pour l'enlever du tuyau. Pour éviter de jouer sur ses réflexes,
-il faut qu'il puisse interagir avec les objets un peu de temps après qu'ils ne soient plus visibles. Pour cela, le joueur doit pouvoir interagir avec les objets qu'à partir du moment
-où il peut les voir, et jusqu'à ce qu'ils soient détruits en atteignant le bas de l'écran.\\ \\
+il faut qu'il puisse interagir avec les objets un peu de temps après qu'ils ne soient plus visibles. Pour cela, le joueur ne doit pouvoir interagir avec les objets qu'à partir du
+moment où il peut les voir, et jusqu'à ce qu'ils soient détruits en atteignant le bas de l'écran.\\ \\
 
 \paragraph{}A chaque fois que le joueur enlève un objet cible, ses points de score augmentent, s'il en loupe ou s'il essaie d'enlever le mauvais objet, ses points de score baissent.
 Nous n'étions pas encore sûrs des conditions de victoire :
@@ -34,7 +34,7 @@ Parmi les quantifiables :
     \item Nombre de cibles total ou pourcentage de chance d'apparition de la cible durant la partie
     \item Nombre de distracteurs total ou pourcentage de chance d'apparition du distracteur durant la partie
     \item Emplacement des éléments par rapport au centre
-    \item Nombre de cible a trouver pour finir la partie
+    \item Nombre de cibles à trouver pour finir la partie
     \item Temps alloué à la partie
     \item Nombre de distracteurs différents\\
 \end{itemize}
@@ -87,13 +87,13 @@ performant, le tube se met à trembler tout en pivotant de quelques crans sur la
 \paragraph{}Enfin, le jeu étant encore trop facile, nous avons rajouté la possibilité d'ajouter des tuyaux. Il est possible d'en rajouter jusqu'à 5 (ce qu'il est possible d'afficher à l'écran). Le
 nombre de tuyaux reste fixe durant une partie, le joueur ne pouvant en rajouter ou en enlever qu'entre deux parties.
 
-\paragraph{}Durant une partie, tous ces paramètres de difficultés peuvent être actifs en même temps. Néanmoins, ceux-ci s'activent selon la performance du joueur : si celui-ci n'est pas très
+\paragraph{}Durant une partie, tous ces paramètres de difficulté peuvent être actifs en même temps. Néanmoins, ceux-ci s'activent selon la performance du joueur : si celui-ci n'est pas très
 performant, la difficulté ne bougera pas trop, voire baissera pour s'adapter à son niveau.
 
 \paragraph{}La figure \ref{ProtoPipeDifficultes} est composée de trois images représentant plusieurs modifications de la difficulté. On peut imaginer relier ces modifications aux
 différents mondes. Par exemple, dans la première image, le tuyau est au centre et ne bouge pas et les sphères tombent droit au milieu, on peut associer cet état au monde de l'attention
 soutenue. La deuxième image montre un cran supérieur de difficulté de ce monde avec un tuyau qui tourne sur lui-même et vibre. La troisième image montre plusieurs tuyaux à la fois.
-Le sujet doit faire attention à plusieurs élément en même temps. On peut donc situer cet état au monde de l'attention divisive.
+Le sujet doit faire attention à plusieurs éléments en même temps. On peut donc situer cet état au monde de l'attention divisive.
 
 \begin{figure}[H]
     \begin{center}
@@ -114,11 +114,11 @@ gameplay et rajouter du contenu. \\
     \vspace{-10pt}
     \includegraphics[width=6cm]{hl2-power-generator.jpg}
     \captionsetup{labelformat=simpleNumber}
-    \caption{Décor}
+    \caption{Générateurs d'énergie dans Half Life 2}
 \end{wrapfigure}
 
 \paragraph{Contexte}Notre thème est la \gls{SF}. Nous avons donc cherché des inspirations dans des jeux avec cette thématique. L'un d'eux nous est venu assez rapidement à l'esprit.
-Il y a dans Half Life 2 des générateurs d'énergie qui ressemble à des tubes dans laquelle une sphère d'énergie flotte. Ces générateurs sont d'abord fermés par une sorte de bouclier
+Il y a dans Half Life 2 des générateurs d'énergie qui ressemblent à des tubes dans lesquels une sphère d'énergie flotte. Ces générateurs sont d'abord fermés par une sorte de bouclier
 qu'il faut ouvrir pour pouvoir récupérer la sphère d'énergie. Nous avons voulu nous baser sur ce principe pour notre gameplay.
 
 \paragraph{}Nos tubes de Mario sont donc devenus des tubes électromagnétiques, protégés par des boucliers qui peuvent s'ouvrirent en se séparant en deux au milieu. Des sphères
@@ -145,7 +145,7 @@ des couleurs plutôt blanches, bleues et oranges.
 \newpage
 
 \paragraph{Gameplay}Pour pouvoir intégrer le tube dans la scène, nous avons pensé à le multiplier et le placer sur un barillier qui pourrait tourner. Chaque tube aurait un niveau
-d'énergie. Le but du joueur est d'enlever des sphère d'énergie instable (les cibles) pour ne pas que le niveau d'énergie stable d'un des tubes arrive à 0. Si c'est le cas, c'est le
+d'énergie. Le but du joueur est d'enlever des sphères d'énergie instable (les cibles) pour ne pas que le niveau d'énergie stable d'un des tubes arrive à 0. Si c'est le cas, c'est le
 game over. Le joueur peut utiliser les touches droite et gauche du clavier pour faire tourner le barillier et faire face à un autre tube. Il ne peut enlever une sphère instable d'un
 tube que lorsque celui-ci lui fait face. Si le joueur est performant, la difficulté peut augmenter de plusieurs manières :
 \begin{itemize}
@@ -162,9 +162,9 @@ tube que lorsque celui-ci lui fait face. Si le joueur est performant, la difficu
 \label{BarillierTube}
 \end{figure}
 
-\begin{wrapfigure}[5]{l}{4cm}
+\begin{wrapfigure}[6]{l}{5cm}
     \vspace{-25pt}
-    \includegraphics[width=4cm]{PDC-narration.png}
+    \includegraphics[width=5cm]{PDC-narration.png}
     \captionsetup{labelformat=simpleNumber}
     \caption{Narration}
 \end{wrapfigure}
@@ -232,7 +232,7 @@ Fin de la boucle Pour
 \newpage
 \paragraph{Gestion du score} Concernant le scoring, nous avons décidé de nous inspirer du système de scoring du jeu de rythme Osu. Dans l'image \ref{ScoringInspiration}, on peut voir 4
 éléments principaux de scoring. En haut à gauche se trouve une jauge de vie qui baisse à chaque erreur et remonte a chaque rythme réussi. En bas à gauche se trouve le combo de rythmes
-réussis d'affilé. Celui-ci est un multiplicateur des points gagnés par rythme réussi. La somme totale des points est affichée en haut à droite, au dessus du pourcentage de réussite sur
+réussis d'affilé. C'est un multiplicateur des points gagnés par rythme réussi. La somme totale des points est affichée en haut à droite, au dessus du pourcentage de réussite sur
 la partie. Le scoring sur Osu est détaillé sur leur site internet \cite{OSU}.\\
 
 \begin{figure}[H]
@@ -264,7 +264,7 @@ et le score. En bas à droite, la cible est représentée au joueur. La précisi
 \end{figure}
 
 \paragraph{}Nous avons quelques perspectives d'amélioration pour ce mini jeu qu'il pourrait être intéressant de développer. Nous avons par exemple pensé à changer la vitesse des
-sphères de manière indépendante selon les tubes. Un autre amélioration un peu plus importante du gameplay serait de rajouter des miroirs sur les côtés du barillier pour pouvoir voir
-les tubes qui sont cachés derrière et ainsi augmenter le nombre maximum de tubes ouverts.
+sphères de manière indépendante selon les tubes. Une autre amélioration un peu plus importante du gameplay serait de rajouter des miroirs sur les côtés du barillier pour voir les
+tubes qui sont cachés derrière et ainsi augmenter le nombre maximum de tubes ouverts.
 
 \label{prototypage}

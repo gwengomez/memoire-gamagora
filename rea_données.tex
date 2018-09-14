@@ -5,7 +5,7 @@
 
 \paragraph{}Dans la tâche d'expérimentation réalisée par les chercheurs, certaines données sont recueillies pour être analysées. Ces données regroupent :
 \begin{description}
-\item[Les hits :] à chaque fois qu'une cible est trouvée. Cette donnée est enregistrée sous la forme d'un pourcentage de hits réussi sur toutes les cibles apparues.
+\item[Les hits :] à chaque fois qu'une cible est trouvée. Cette donnée est enregistrée sous la forme d'un pourcentage de hits sur toutes les cibles apparues.
 \item[Les FA :] lorsque le sujet pense avoir vu une cible alors qu'il n'y en a pas. Cette donnée est enregistrée sous la forme d'un pourcentage de FA sur tous les distracteurs apparus.
 \item[Les miss :] lorsque le sujet rate une cible. Cette donnée est l'inverse des hits.
 \item[Le dprime :] la sensibilité du sujet pour identifier la cible des distracteurs. Voici le calcul de la valeur du dprime : \[NormeInverse(PourcentageHits) - NormeInverse(PourcentageFA)\]
@@ -21,7 +21,7 @@ le joueur est performant, et inversement. Nous devons alors déterminer à parti
 \paragraph{Des données pour l'analyse}L'intérêt de ce jeu est aussi de collecter les données des joueurs pour pouvoir les analyser. Cela pourrait nous permettre de mieux comprendre le
 fonctionnement de l'évolution des capacités attentionnelles des joueurs. 
 
-\paragraph{Les données personnelles}Il étaient nécessaire lors de la récolte de ces données de pouvoir savoir à quel "profil" de personnes elles appartiennent et de pouvoir suivre
+\paragraph{Les données personnelles}Il était nécessaire lors de la récolte de ces données de pouvoir savoir à quel "profil" de personnes elles appartiennent et de pouvoir suivre
 l'évolution du joueur. Le premier problème qui s'est posé est celui de la conservation de données personnelles. En effet, conserver des données permettant d'identifier formellement
 un individu nécessite de monter un dossier auprès de la \gls{CNIL}, ce qui implique une procédure assez longue (plusieurs mois, voire plus d'un an). 
 
@@ -44,18 +44,18 @@ sinon, nous créons un nouveau profil de joueur.
 \label{LoginScreen}
 \end{figure}
 
-\paragraph{}Pour la sauvegarde de la progression du joueur, nous pensons extraire du jeu un fichier texte qui permet de savoir où le joueur en est dans le jeu. Lorsque celui-ci crée une
-nouvelle session de jeu (à sa connexion), il pourra importer ce fichier texte, et le jeu chargera sa progression.
+\paragraph{}Pour la sauvegarde de la progression du joueur, nous pensons extraire du jeu un fichier texte permettant de savoir où le joueur en est dans le jeu. Lorsque celui-ci crée
+une nouvelle session de jeu (à sa connexion), il pourra importer ce fichier texte, et le jeu chargera sa progression.
 
 \subsubsection{Méthode d'envoi des données}
 
-\paragraph{}Pour envoyer les données, nous avons choisi d'envoyer des logs à un serveur web Apache. Ces logs sont enregistrées dans un fichier texte sur le serveur. Les données sont
+\paragraph{}Pour envoyer les données, nous avons choisi d'envoyer des logs à un serveur web Apache. Ces logs sont enregistrés dans un fichier texte sur le serveur. Les données sont
 envoyées à différents moments lorsqu'un joueur joue :
 \begin{description}
 \item[Lors de la connexion :] Un nouveau profil de joueur est créé s'il n'existe pas encore. Une nouvelle session de jeu est créée pour connaitre la date et si le joueur joue seul.
-\item[Lors de la création d'un partie :] Une nouvelle partie est créée avec la date et le jeu choisi.
-\item[Lors d'évènements dans le jeu :] On doit envoyer chaque hit, miss, distracteur apparu, FA et la valeur du dprime régulièrement avec le timestamp pour chacun afin de connaitre la
-chronologie des évènements dans le jeu pour une meilleure analyse
+\item[Lors de la création d'une partie :] Une nouvelle partie est créée avec la date et le jeu choisi.
+\item[Lors d'évènements dans le jeu :] On doit envoyer chaque hit, miss, distracteur apparu, FA et la valeur du dprime régulièrement avec le timestamp de chaque donnée afin de
+connaitre la chronologie des évènements. Cela permet une meilleure analyse.
 \end{description}
 
 \paragraph{}Les données sont envoyées sous une forme semblable à une url : c'est une chaine de caractère contenant des données séparées par des "/". Voila la forme de ces url pour
@@ -73,7 +73,7 @@ envoi de données :
     \item[Enregistrement du dprime :] ecas / RegisterDPrime / \textit{hashParty} / \textit{timestamp} / \textit{value}
 \end{description}
 
-\paragraph{}Ces url sont envoyée au serveur web. Il suffit ensuite de les récupérer, puis de les analyser pour extraire les données voulues. La figure \ref{DataSending} montre l'envoi
+\paragraph{}Ces url sont envoyées au serveur web. Il suffit ensuite de les récupérer, puis de les analyser pour extraire les données voulues. La figure \ref{DataSending} montre l'envoi
 des données depuis le jeu jusqu'à leur extraction.
 
 \begin{figure}[H]
@@ -88,10 +88,10 @@ des données depuis le jeu jusqu'à leur extraction.
 \subsubsection{Récupération et traitement des données}
 
 \paragraph{}Nous avons décidé pour traiter les données de créer un parseur en \emph{Rust}\footnote{\url{https://www.rust-lang.org/fr-FR/}}. Cela m'a permis d'apprendre un peu ce
-langage que je ne connaissais pas. Nous avons l'avons utilisé pour plusieurs raisons:
+langage que je ne connaissais pas. Nous l'avons utilisé pour plusieurs raisons:
 \begin{itemize}
-    \item C'est un langage qui interdit au travers de son compilateur beaucoup d'erreur. Cette particularité nous permet d'assurer que les chercheurs ou futurs 
-    développeur travaillant sur ce projet ne pourrons pas écrire un code incorrect facilement. En contrepartie, l'évolution de cet extracteur sera plus longue.
+    \item C'est un langage qui interdit au travers de son compilateur beaucoup d'erreurs. Cette particularité nous permet d'assurer que les chercheurs ou futurs développeurs
+    travaillant sur ce projet ne pourrons pas écrire un code incorrect facilement. En contrepartie, l'évolution de cet extracteur sera plus longue.
     \item C'est un langage naturellement multiplateforme.
     \item C'est un langage compilé qui fournit un exécutable après construction. Il n'y a donc nul besoin d'une "machine virtuelle" tel que la \emph{JVM} pour 
     Java ou l'\emph{interpréteur de Python} pour Python.
